@@ -12,26 +12,33 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Compu Salchichas</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     </head>
-    <body>    
-        <h2>Alumnos</h2>
-        <form action="ClienteAlumno">
-            Nombre del Alumno: <input type="text" name="text1" value="" /> <br>
-            Edad del alumno: <input type="text" name="text2" value="" /> <br>
-            Grado del alumno: <input type="text" name="text3" value="" /> <br>
-            Id del Alumno(Solo para eliminar o actualizar): <input type="text" name="text4" value="" /> <br>
-            Crear Alumno: <input type="radio" name="Oper" value="1" />
-            Mostrar Alumnos: <input type="radio" name="Oper" value="2" checked=""/>
-            Actualizar Alumno <input type="radio" name="Oper" value="3" />
-            Borrar Alumno: <input type="radio" name="Oper" value="4"/>
-            Log In: <input type="radio" name="Oper" value="5"/>
-            <br>
-            <input type="submit" value="Ejecutar"/>
-        </form>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="bg-white p-6 rounded-lg shadow-md w-96">
+            <h2 class="text-2xl font-bold text-center mb-4">Inicia Sesión</h2>
+            <form action="ClienteAlumno" method="post">
+                <div class="mb-4">
+                    <label for="usuario" class="block text-gray-700">Usuario:</label>
+                    <input type="text" id="usuario" name="text1" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="Ingrese su usuario" />
+                </div>
+                <div class="mb-4">
+                    <label for="contraseña" class="block text-gray-700">Contraseña:</label>
+                    <input type="password" id="contraseña" name="text3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="Ingrese su contraseña" />
+                </div>
+                <input type="hidden" name="Oper" value="5"/>
+                <div>
+                    <input type="submit" value="Ejecutar" class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 transition duration-200"/>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
 
+<%--
+Mostrar Alumnos: <input type="radio" name="Oper" value="2" checked=""/>
+--%>
