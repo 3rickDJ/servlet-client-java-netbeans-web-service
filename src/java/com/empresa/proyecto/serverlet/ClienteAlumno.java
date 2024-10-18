@@ -39,6 +39,7 @@ public class ClienteAlumno extends HttpServlet {
             
             int oper, idAlumno, Edad;
             String nombreAlumno, gradoEscolar;
+	    String username, password;
             
             oper = Integer.parseInt(request.getParameter("Oper"));
             
@@ -87,6 +88,16 @@ public class ClienteAlumno extends HttpServlet {
                 idAlumno = Integer.parseInt(request.getParameter("text4"));
                 out.println("<h1>"+"eliminarAlumno(idAlumno)"+"</h1>");
             }
+	    else if (oper==5) {
+		username = request.getParameter("text1");
+		password = request.getParameter("text3");
+		if (encontrarAlumno(username, password)){
+		    out.println("<h1>"+ "El usuario fue encontrado"  +"</h1>");
+		} else {
+		    out.println("<h1>"+ "El usuario o contrasena no son correctos"  +"</h1>");
+		}
+	    }
+
             
             out.println("<a href='http://localhost:8080/ClientAlumnosOwn/'> Regresar .../>");
             out.println("</body>");
@@ -143,6 +154,12 @@ public class ClienteAlumno extends HttpServlet {
 		com.empresa.proyecto.ws.AlumnosWebService_Service service = new com.empresa.proyecto.ws.AlumnosWebService_Service();
 		com.empresa.proyecto.ws.AlumnosWebService port = service.getAlumnosWebServicePort();
 		return port.listarAlumno();
+	}
+
+	private static Boolean encontrarAlumno(java.lang.String usuario, java.lang.String contrasena) {
+		com.empresa.proyecto.ws.AlumnosWebService_Service service = new com.empresa.proyecto.ws.AlumnosWebService_Service();
+		com.empresa.proyecto.ws.AlumnosWebService port = service.getAlumnosWebServicePort();
+		return port.encontrarAlumno(usuario, contrasena);
 	}
 
 
